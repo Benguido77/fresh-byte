@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>PC & Consoles Clean – Nettoyage et petites réparations</title>
+<title>Fresh Byte – Nettoyage et petites réparations</title>
 <style>
 :root{--bg:#f6f7fb;--card:#fff;--text:#1b1f2a;--muted:#5b6475;--accent:#2563eb;--accent-t:#fff;--border:#e2e5ee;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -129,6 +129,7 @@ header>:not(.fl){position:relative;z-index:1}
     <div><label for="s">Service</label>
       <select id="s"><option>Nettoyage PC</option><option>Pâte thermique</option><option>Nettoyage console</option><option>Petite réparation</option><option>Autre</option></select></div>
     <div><label for="m">Modèle et problème</label><textarea id="m" rows="4" placeholder="Ex : PS5, bruit de ventilateur qui augmente"></textarea></div>
+    <input type="checkbox" id="bc" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
     <button class="btn" type="submit">Envoyer ma demande</button>
     <p id="ok" role="status">Merci ! Ton application e-mail s'ouvre : il te suffit d'envoyer le message.</p>
   </form>
@@ -138,13 +139,22 @@ header>:not(.fl){position:relative;z-index:1}
 </div>
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
-// Remplace par ton adresse e-mail : la demande s'ouvre dans le client mail du visiteur.
-var EMAIL="freshbyte94@gmail.com";
+// Envoi direct par e-mail via Web3Forms : remplace la cle ci-dessous (voir web3forms.com)
+var KEY="bf39b8af-70fd-4f6d-8e35-28e31a06b3b7";
+var okEl=document.getElementById('ok');
 document.getElementById('f').addEventListener('submit',function(e){
   e.preventDefault();
-  var b=encodeURIComponent("Nom : "+n.value+"\nContact : "+t.value+"\nService : "+s.value+"\n\n"+m.value);
-  document.getElementById('ok').style.display='block';
-  location.href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Demande de devis – "+s.value)+"&body="+b;
+  var f=this,btn=f.querySelector('button');
+  btn.disabled=true;btn.textContent='Envoi en cours…';okEl.style.display='none';
+  fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+    body:JSON.stringify({access_key:KEY,subject:'Demande de devis – '+f.s.value,from_name:'Site Fresh Byte',name:f.n.value,contact:f.t.value,service:f.s.value,message:f.m.value,botcheck:f.bc.checked})})
+  .then(function(r){return r.json()})
+  .then(function(j){
+    if(!j.success)throw new Error();
+    okEl.textContent='Merci ! Ta demande est bien envoyée, je te réponds très vite.';okEl.style.display='block';f.reset();
+  })
+  .catch(function(){okEl.textContent="Oups, l'envoi a échoué. Réessaie ou contacte-moi directement par e-mail ou téléphone.";okEl.style.display='block'})
+  .then(function(){btn.disabled=false;btn.textContent='Envoyer ma demande'});
 });
 // Apparition douce des blocs au défilement
 var els=document.querySelectorAll('h2,.card,.steps li,form');
