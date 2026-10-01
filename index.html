@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PC & Consoles Clean – Nettoyage et petites réparations</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#1b1f2a;--muted:#5b6475;--accent:#2563eb;--accent-t:#fff;--border:#e2e5ee;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1219;--card:#181c26;--text:#eef0f6;--muted:#9aa3b6;--accent:#5b8cff;--accent-t:#0b1020;--border:#272d3b}}
+:root[data-theme="dark"]{--bg:#0f1219;--card:#181c26;--text:#eef0f6;--muted:#9aa3b6;--accent:#5b8cff;--accent-t:#0b1020;--border:#272d3b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 40px;text-align:center}
+.tag{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:99px;padding:4px 14px;font-size:.85rem;color:var(--muted)}
+h1{font-size:clamp(1.9rem,5vw,3rem);margin:16px 0 8px;line-height:1.15}
+header p{color:var(--muted);max-width:560px;margin:0 auto 24px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-t);padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:600;border:0;cursor:pointer;font-size:1rem}
+h2{font-size:1.5rem;margin:48px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
+.card h3{margin:0 0 6px;font-size:1.1rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.price{margin-top:12px;font-weight:700;color:var(--accent)}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:12px}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px 14px 56px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-t);display:grid;place-items:center;font-weight:700}
+form{display:grid;gap:12px;max-width:560px}
+label{font-size:.9rem;color:var(--muted)}
+input,select,textarea{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font:inherit}
+footer{margin-top:56px;padding:24px 0;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem;text-align:center}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--border)}
+.bar{max-width:960px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.links{display:flex;gap:20px}
+.links a{color:var(--muted);text-decoration:none;font-size:.92rem}
+.links a:hover{color:var(--text)}
+nav .btn{padding:8px 16px;font-size:.9rem;min-height:40px}
+@media(max-width:600px){.links{display:none}}
+header{background:radial-gradient(600px 240px at 50% 0,color-mix(in srgb,var(--accent) 22%,transparent),transparent)}
+.btn{transition:transform .15s,box-shadow .15s;min-height:44px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px color-mix(in srgb,var(--accent) 35%,transparent)}
+.card{transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+input,select,textarea{font-size:16px}
+input:focus,select:focus,textarea:focus,.btn:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.rv.on{opacity:1;transform:none}
+#ok{display:none;color:var(--accent);font-weight:600;margin:0}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+header{position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:-40%;z-index:0;background:radial-gradient(circle at 30% 40%,color-mix(in srgb,var(--accent) 25%,transparent),transparent 40%),radial-gradient(circle at 70% 60%,color-mix(in srgb,#a855f7 22%,transparent),transparent 40%);animation:bl 14s ease-in-out infinite alternate}
+header>:not(.fl){position:relative;z-index:1}
+.fl{position:absolute;z-index:0;font-size:2rem;opacity:.22;pointer-events:none;animation:fl 6s ease-in-out infinite}
+.fl.sp{animation:sp 3s linear infinite}
+.rot{display:inline-block;background:linear-gradient(90deg,var(--accent),#a855f7,#06b6d4,var(--accent));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gr 4s linear infinite;transition:opacity .35s,transform .35s}
+.rot.out{opacity:0;transform:translateY(-.4em)}
+.btn.pulse{animation:pu 2.4s infinite}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+.stats div{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center}
+.stats b{display:block;font-size:clamp(1.6rem,5vw,2.2rem);color:var(--accent)}
+.stats span{color:var(--muted);font-size:.85rem}
+#pg{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#a855f7);transform-origin:0 50%;transform:scaleX(0);z-index:20}
+.card:hover{transform:translateY(-4px) perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));border-color:var(--accent)}
+@keyframes bl{to{transform:translate(6%,4%) rotate(20deg) scale(1.1)}}
+@keyframes fl{50%{transform:translateY(-14px) rotate(8deg)}}
+@keyframes sp{to{transform:rotate(360deg)}}
+@keyframes gr{to{background-position:200% center}}
+@keyframes pu{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 50%,transparent)}70%,100%{box-shadow:0 0 0 14px transparent}}
+@media(prefers-reduced-motion:reduce){header::before,.fl,.rot,.btn.pulse{animation:none}}
+</style>
+</head>
+<body>
+<div id="pg"></div>
+<nav><div class="bar"><b>🛠️ Fresh Byte</b><div class="links"><a href="#services">Services</a><a href="#etapes">Étapes</a><a href="#contact">Contact</a></div><a class="btn" href="#contact">Devis gratuit</a></div></nav>
+<div class="wrap">
+<header>
+  <span class="fl" style="left:6%;top:18%" aria-hidden="true">💻</span>
+  <span class="fl" style="right:8%;top:14%;animation-delay:-2s" aria-hidden="true">🎮</span>
+  <span class="fl sp" style="left:12%;bottom:12%" aria-hidden="true">🌀</span>
+  <span class="fl" style="right:14%;bottom:16%;animation-delay:-4s" aria-hidden="true">🖥️</span>
+  <span class="tag">📍 Service à domicile ou dépôt – Charleroi</span>
+  <h1><span id="det">Ton</span> <span class="rot" id="rot">PC</span><br>retrouve sa pleine forme.</h1>
+  <p>Nettoyage, pâte thermique et petites réparations. Moins de bruit, moins de chauffe, plus de performances.</p>
+  <a class="btn pulse" href="#contact">Demander un devis gratuit</a>
+</header>
+<div class="stats">
+  <div><b data-n="24">0</b><span>h pour te répondre</span></div>
+  <div><b data-n="48">0</b><span>h d'intervention max</span></div>
+  <div><b data-n="100">0</b><span>% prix annoncé d'avance</span></div>
+</div>
+ 
+<section id="services">
+  <h2>Mes services</h2>
+  <div class="grid">
+    <div class="card"><h3>🧹 Nettoyage PC</h3><p>Dépoussiérage complet : ventilateurs, radiateurs, boîtier, filtres.</p><div class="price">À partir de 25 €</div></div>
+    <div class="card"><h3>🌡️ Pâte thermique</h3><p>Remplacement sur processeur et/ou carte graphique, avec vérification des températures.</p><div class="price">À partir de 30 €</div></div>
+    <div class="card"><h3>🎮 Nettoyage consoles</h3><p>PS4, PS5, Xbox, Switch : démontage, dépoussiérage, pâte thermique si nécessaire.</p><div class="price">À partir de 35 €</div></div>
+    <div class="card"><h3>🔧 Petites réparations</h3><p>Remplacement de ventilateur, SSD/RAM, câbles, diagnostic de panne simple.</p><div class="price">Sur devis</div></div>
+  </div>
+</section>
+ 
+<section id="etapes">
+  <h2>Comment ça marche</h2>
+  <ol class="steps">
+    <li><strong>Tu me contactes</strong> avec le modèle et le problème (bruit, surchauffe, lenteur…).</li>
+    <li><strong>Je te réponds</strong> avec un prix clair avant toute intervention.</li>
+    <li><strong>Dépôt ou déplacement</strong> : on s'organise selon ta situation.</li>
+    <li><strong>Je te rends l'appareil</strong> propre, testé, avec un compte rendu.</li>
+  </ol>
+</section>
+ 
+<section>
+  <h2>Pourquoi me choisir</h2>
+  <div class="grid">
+    <div class="card"><h3>Prix transparents</h3><p>Pas de mauvaise surprise : devis avant intervention.</p></div>
+    <div class="card"><h3>Soin du matériel</h3><p>Outils adaptés, protection antistatique, pièces de qualité.</p></div>
+    <div class="card"><h3>Rapide</h3><p>La plupart des interventions sont faites en 24 à 48 h.</p></div>
+  </div>
+</section>
+ 
+<section id="contact">
+  <h2>Demander un devis</h2>
+  <form id="f">
+    <div><label for="n">Nom</label><input id="n" required></div>
+    <div><label for="t">Téléphone ou e-mail</label><input id="t" required></div>
+    <div><label for="s">Service</label>
+      <select id="s"><option>Nettoyage PC</option><option>Pâte thermique</option><option>Nettoyage console</option><option>Petite réparation</option><option>Autre</option></select></div>
+    <div><label for="m">Modèle et problème</label><textarea id="m" rows="4" placeholder="Ex : PS5, bruit de ventilateur qui augmente"></textarea></div>
+    <button class="btn" type="submit">Envoyer ma demande</button>
+    <p id="ok" role="status">Merci ! Ton application e-mail s'ouvre : il te suffit d'envoyer le message.</p>
+  </form>
+</section>
+ 
+<footer>© <span id="y"></span> Fresh Byte – Guillaume · freshbyte94@gmail.com · 0489 36 03 33</footer>
+</div>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+// Remplace par ton adresse e-mail : la demande s'ouvre dans le client mail du visiteur.
+var EMAIL="freshbyte94@gmail.com";
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  var b=encodeURIComponent("Nom : "+n.value+"\nContact : "+t.value+"\nService : "+s.value+"\n\n"+m.value);
+  document.getElementById('ok').style.display='block';
+  location.href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Demande de devis – "+s.value)+"&body="+b;
+});
+// Apparition douce des blocs au défilement
+var els=document.querySelectorAll('h2,.card,.steps li,form');
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){var t=x.target;t.style.transitionDelay=(Array.prototype.indexOf.call(t.parentNode.children,t)%4*90)+'ms';t.classList.add('on');io.unobserve(t);setTimeout(function(){t.classList.remove('rv','on');t.style.transitionDelay=''},900)}})},{threshold:.1});
+  els.forEach(function(el){el.classList.add('rv');io.observe(el)});
+  // Compteurs animés
+  var co=new IntersectionObserver(function(es){es.forEach(function(x){if(!x.isIntersecting)return;co.unobserve(x.target);var b=x.target,n=+b.dataset.n,t0=performance.now();(function f(t){var p=Math.min((t-t0)/1200,1);b.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)})},{threshold:.6});
+  document.querySelectorAll('.stats b').forEach(function(b){co.observe(b)});
+}
+// Mot qui change dans le titre
+var w=[['Ton','PC'],['Ton','laptop'],['Ta','PS5'],['Ta','Xbox'],['Ta','Switch']],wi=0,r=document.getElementById('rot'),d=document.getElementById('det');
+setInterval(function(){r.classList.add('out');setTimeout(function(){wi=(wi+1)%w.length;d.textContent=w[wi][0];r.textContent=w[wi][1];r.classList.remove('out')},350)},2200);
+// Barre de progression
+var pg=document.getElementById('pg');
+addEventListener('scroll',function(){var h=document.documentElement;pg.style.transform='scaleX('+(scrollY/((h.scrollHeight-innerHeight)||1))+')'},{passive:true});
+// Effet d'inclinaison des cartes
+document.querySelectorAll('.card').forEach(function(c){
+  c.addEventListener('mousemove',function(e){var b=c.getBoundingClientRect();c.style.setProperty('--ry',((e.clientX-b.left)/b.width-.5)*10+'deg');c.style.setProperty('--rx',(.5-(e.clientY-b.top)/b.height)*10+'deg')});
+  c.addEventListener('mouseleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')});
+});
+</script>
+</body>
+</html>
